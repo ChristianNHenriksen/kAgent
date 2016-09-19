@@ -66,8 +66,9 @@ class RequestChain(val url: String, val method: Method) {
         val body = parseBody(response)
         val status = parseStatus(response)
         val headers = parseHeaders(response)
+        val contentType = parseContentType(response)
 
-        return Response(status, body, headers)
+        return Response(status, body, headers, contentType)
     }
 
     private fun parseBody(response: CloseableHttpResponse): String {
@@ -83,6 +84,12 @@ class RequestChain(val url: String, val method: Method) {
         val headers = mutableMapOf<String, String>()
         response.allHeaders.forEach { headers[it.name] = it.value }
         return headers
+    }
+
+    private fun parseContentType(response: CloseableHttpResponse): String? {
+        if (response.entity.contentType == null) return null
+
+        return response.entity.contentType.value
     }
 
     private val requestBuilder: RequestBuilder = when (method) {

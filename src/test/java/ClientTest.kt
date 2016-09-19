@@ -109,6 +109,20 @@ class ClientTest {
     }
 
     @Test
+    fun shouldParseContentType() {
+        server?.`when`(
+                request()
+                        .withMethod("GET")
+                        .withPath("/type")
+
+        )?.respond(response().withBody("type").withHeader("Content-Type", "application/json"))
+
+        val response = Client.get("http://localhost:1080/type").body("Peter").execute()
+        assertEquals("type", response.text)
+        assertEquals("application/json", response.contentType)
+    }
+
+    @Test
     fun shouldSendBody() {
         server?.`when`(
                 request()
