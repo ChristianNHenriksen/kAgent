@@ -1,6 +1,6 @@
 # kAgent
 
-[![GitHub version](https://badge.fury.io/gh/ChristianNHenriksen%2FkAgent@2x.png)](https://badge.fury.io/gh/ChristianNHenriksen%2FkAgent)
+[![GitHub version](https://badge.fury.io/gh/ChristianNHenriksen%2FkAgent.svg)](https://badge.fury.io/gh/ChristianNHenriksen%2FkAgent)
 
 #### GET request
 ```Kotlin
